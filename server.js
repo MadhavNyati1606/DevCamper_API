@@ -7,12 +7,14 @@ const logger = require('./middleware/logger');
 dotenv.config({path : './config/config.env'});
 connectDB();
 const bootcamps = require('./router/bootcamps');
+const courses = require('./router/courses');
 const app = express();
 // Body parser
 app.use(express.json());
 
 app.use(logger);
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses)
 app.use(errorHandler);      
 
 const PORT = process.env.PORT || 5000
